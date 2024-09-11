@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pterm/pterm"
+	"github.com/overmindtech/pterm"
 )
 
 type Example struct {
@@ -119,13 +119,13 @@ func main() {
 				// the table should contain 5 columns. Each cell is a feature.
 				// Make multiple rows, if there are more than 4 features.
 				// A link to the examples should be included in every cell.
-				// Format: "[Example](https://github.com/pterm/pterm/tree/master/_examples/FEATURE)"
+				// Format: "[Example](https://github.com/overmindtech/pterm/tree/master/_examples/FEATURE)"
 				if i%5 == 0 {
 					tableContent += "| "
 				}
 				name := strings.ToUpper(string(feature[0])) + feature[1:]
 				name = strings.ReplaceAll(name, "_", " ")
-				tableContent += fmt.Sprintf("%s <br/> [(Examples)](https://github.com/pterm/pterm/tree/master/_examples/%s) |", name, feature)
+				tableContent += fmt.Sprintf("%s <br/> [(Examples)](https://github.com/overmindtech/pterm/tree/master/_examples/%s) |", name, feature)
 				if (i+1)%5 == 0 {
 					tableContent += "\n"
 				}
@@ -152,10 +152,10 @@ func main() {
 			websiteIndex, _ := os.ReadFile("./docs/index.html")
 			websiteIndexString := string(websiteIndex)
 
-			// Write as li elements, which contain a link to the example. (https://github.com/pterm/pterm/tree/master/_examples/{name})
+			// Write as li elements, which contain a link to the example. (https://github.com/overmindtech/pterm/tree/master/_examples/{name})
 			var links []string
 			for _, printer := range allPrinters {
-				links = append(links, fmt.Sprintf(`<li><a href="https://github.com/pterm/pterm/tree/master/_examples/%s">%s</a></li>`, printer, printer))
+				links = append(links, fmt.Sprintf(`<li><a href="https://github.com/overmindtech/pterm/tree/master/_examples/%s">%s</a></li>`, printer, printer))
 			}
 
 			// Replace placeholder with li elements.

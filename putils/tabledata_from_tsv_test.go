@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/MarvinJWendt/testza"
-	"github.com/pterm/pterm"
+	"github.com/overmindtech/pterm"
 )
 
 func TestTableDataFromTSV(t *testing.T) {

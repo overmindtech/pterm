@@ -1,8 +1,6 @@
 package pterm
 
 import (
-	"atomicgo.dev/cursor"
-	"atomicgo.dev/schedule"
 	"fmt"
 	"io"
 	"math"
@@ -10,9 +8,12 @@ import (
 	"strings"
 	"time"
 
+	"atomicgo.dev/cursor"
+	"atomicgo.dev/schedule"
+
 	"github.com/gookit/color"
 
-	"github.com/pterm/pterm/internal"
+	"github.com/overmindtech/pterm/internal"
 )
 
 // ActiveProgressBarPrinters contains all running ProgressbarPrinters.

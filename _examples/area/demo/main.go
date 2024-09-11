@@ -3,8 +3,8 @@ package main
 import (
 	"time"
 
-	"github.com/pterm/pterm"
-	"github.com/pterm/pterm/putils"
+	"github.com/overmindtech/pterm"
+	"github.com/overmindtech/pterm/putils"
 )
 
 func main() {

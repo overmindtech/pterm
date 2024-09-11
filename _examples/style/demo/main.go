@@ -1,6 +1,6 @@
 package main
 
-import "github.com/pterm/pterm"
+import "github.com/overmindtech/pterm"
 
 func main() {
 	// Define a primary style with light cyan foreground, gray background, and bold text

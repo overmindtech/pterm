@@ -9,7 +9,7 @@ import (
 	"atomicgo.dev/keyboard/keys"
 	"github.com/lithammer/fuzzysearch/fuzzy"
 
-	"github.com/pterm/pterm/internal"
+	"github.com/overmindtech/pterm/internal"
 )
 
 var (

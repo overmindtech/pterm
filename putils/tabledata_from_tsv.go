@@ -1,7 +1,7 @@
 package putils
 
 import (
-	"github.com/pterm/pterm"
+	"github.com/overmindtech/pterm"
 )
 
 // TableDataFromTSV converts TSV data into pterm.TableData.

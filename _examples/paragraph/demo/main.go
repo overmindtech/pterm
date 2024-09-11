@@ -1,6 +1,6 @@
 package main
 
-import "github.com/pterm/pterm"
+import "github.com/overmindtech/pterm"
 
 func main() {
 	// Using the default paragraph printer to print a long text.

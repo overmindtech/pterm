@@ -1,6 +1,6 @@
 package main
 
-import "github.com/pterm/pterm"
+import "github.com/overmindtech/pterm"
 
 func main() {
 	// Loop from 0 to 14

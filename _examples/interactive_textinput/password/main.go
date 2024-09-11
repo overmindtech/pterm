@@ -1,6 +1,6 @@
 package main
 
-import "github.com/pterm/pterm"
+import "github.com/overmindtech/pterm"
 
 func main() {
 	// Create an interactive text input with a mask for password input

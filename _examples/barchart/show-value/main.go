@@ -1,6 +1,6 @@
 package main
 
-import "github.com/pterm/pterm"
+import "github.com/overmindtech/pterm"
 
 func main() {
 	// Define a slice of bars for the bar chart. Each bar is represented by a struct

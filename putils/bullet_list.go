@@ -3,8 +3,8 @@ package putils
 import (
 	"strings"
 
-	"github.com/pterm/pterm"
-	"github.com/pterm/pterm/internal"
+	"github.com/overmindtech/pterm"
+	"github.com/overmindtech/pterm/internal"
 )
 
 // BulletListFromStrings returns a BulletListPrinter with Text using the NewTreeListItemFromString method.

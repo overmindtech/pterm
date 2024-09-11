@@ -8,7 +8,7 @@ import (
 	"atomicgo.dev/keyboard/keys"
 	"github.com/mattn/go-runewidth"
 
-	"github.com/pterm/pterm/internal"
+	"github.com/overmindtech/pterm/internal"
 )
 
 // DefaultInteractiveTextInput is the default InteractiveTextInput printer.

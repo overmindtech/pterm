@@ -7,7 +7,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/pterm/pterm/internal"
+	"github.com/overmindtech/pterm/internal"
 )
 
 // DefaultHeatmap contains standards, which can be used to print a HeatmapPrinter.

@@ -1,4 +1,4 @@
-module github.com/pterm/pterm
+module github.com/overmindtech/pterm
 
 go 1.21
 
@@ -19,6 +19,7 @@ require (
 	github.com/containerd/console v1.0.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.3 // indirect
+	github.com/pterm/pterm v0.12.53 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect

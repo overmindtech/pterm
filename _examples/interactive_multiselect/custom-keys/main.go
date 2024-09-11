@@ -1,9 +1,10 @@
 package main
 
 import (
-	"atomicgo.dev/keyboard/keys"
 	"fmt"
-	"github.com/pterm/pterm"
+
+	"atomicgo.dev/keyboard/keys"
+	"github.com/overmindtech/pterm"
 )
 
 func main() {

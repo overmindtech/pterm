@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/pterm/pterm"
 	"time"
+
+	"github.com/overmindtech/pterm"
 )
 
 func main() {
