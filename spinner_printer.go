@@ -196,7 +196,7 @@ func (s SpinnerPrinter) Start(text ...interface{}) (*SpinnerPrinter, error) {
 				if s.ShowTimer {
 					timer = " (" + time.Since(s.startedAt).Round(s.TimerRoundingFactor).String() + ")"
 				}
-				Fprinto(s.Writer, s.Style.Sprint(seq)+" "+s.MessageStyle.Sprint(s.Text)+s.TimerStyle.Sprint(timer))
+				Fprinto(s.Writer, s.GetFormattedPrefix()+s.Style.Sprint(seq)+" "+s.MessageStyle.Sprint(s.Text)+s.TimerStyle.Sprint(timer))
 				s.currentSequence = seq
 				time.Sleep(s.Delay)
 			}
