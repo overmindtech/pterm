@@ -22,6 +22,11 @@ var DefaultSpinner = SpinnerPrinter{
 	SuccessPrinter:      &Success,
 	FailPrinter:         &Error,
 	WarningPrinter:      &Warning,
+
+	Prefix: Prefix{
+		Style: &ThemeDefault.SpinnerTextStyle,
+		Text:  "",
+	},
 }
 
 // SpinnerPrinter is a loading animation, which can be used if the progress is unknown.
@@ -41,6 +46,8 @@ type SpinnerPrinter struct {
 	ShowTimer           bool
 	TimerRoundingFactor time.Duration
 	TimerStyle          *Style
+
+	Prefix Prefix
 
 	IsActive bool
 
@@ -131,14 +138,32 @@ func (s *SpinnerPrinter) SetStartedAt(t time.Time) {
 	s.startedAt = t
 }
 
+// WithPrefix sets the prefix of the SpinnerPrinter.
+func (s SpinnerPrinter) WithPrefix(prefix Prefix) *SpinnerPrinter {
+	s.Prefix = prefix
+	return &s
+}
+
+// WithIndentation sets the indentation of the SpinnerPrinter, without resetting
+// the indentation's formatting.
+func (s SpinnerPrinter) WithIndentation(indentation string) *SpinnerPrinter {
+	s.Prefix.Text = indentation
+	return &s
+}
+
+// GetFormattedPrefix returns the Prefix as a styled text string.
+func (s SpinnerPrinter) GetFormattedPrefix() string {
+	return s.Prefix.Style.Sprint(s.Prefix.Text)
+}
+
 // UpdateText updates the message of the active SpinnerPrinter.
 // Can be used live.
 func (s *SpinnerPrinter) UpdateText(text string) {
 	s.Text = text
 	if !RawOutput {
-		Fprinto(s.Writer, s.Style.Sprint(s.currentSequence)+" "+s.MessageStyle.Sprint(s.Text))
+		Fprinto(s.Writer, s.GetFormattedPrefix()+s.Style.Sprint(s.currentSequence)+" "+s.MessageStyle.Sprint(s.Text))
 	} else {
-		Fprintln(s.Writer, s.Text)
+		Fprintln(s.Writer, s.GetFormattedPrefix()+s.Text)
 	}
 }
 
@@ -153,7 +178,7 @@ func (s SpinnerPrinter) Start(text ...interface{}) (*SpinnerPrinter, error) {
 	}
 
 	if RawOutput {
-		Fprintln(s.Writer, s.Text)
+		Fprintln(s.Writer, s.GetFormattedPrefix()+s.Text)
 	}
 
 	go func() {
@@ -171,7 +196,7 @@ func (s SpinnerPrinter) Start(text ...interface{}) (*SpinnerPrinter, error) {
 				if s.ShowTimer {
 					timer = " (" + time.Since(s.startedAt).Round(s.TimerRoundingFactor).String() + ")"
 				}
-				Fprinto(s.Writer, s.Style.Sprint(seq)+" "+s.MessageStyle.Sprint(s.Text)+s.TimerStyle.Sprint(timer))
+				Fprinto(s.Writer, s.GetFormattedPrefix()+s.Style.Sprint(seq)+" "+s.MessageStyle.Sprint(s.Text)+s.TimerStyle.Sprint(timer))
 				s.currentSequence = seq
 				time.Sleep(s.Delay)
 			}
@@ -225,7 +250,7 @@ func (s *SpinnerPrinter) Info(message ...interface{}) {
 		message = []interface{}{s.Text}
 	}
 	fClearLine(s.Writer)
-	Fprinto(s.Writer, s.InfoPrinter.Sprint(message...))
+	Fprinto(s.Writer, s.GetFormattedPrefix()+s.InfoPrinter.Sprint(message...))
 	_ = s.Stop()
 }
 
@@ -240,7 +265,7 @@ func (s *SpinnerPrinter) Success(message ...interface{}) {
 		message = []interface{}{s.Text}
 	}
 	fClearLine(s.Writer)
-	Fprinto(s.Writer, s.SuccessPrinter.Sprint(message...))
+	Fprinto(s.Writer, s.GetFormattedPrefix()+s.SuccessPrinter.Sprint(message...))
 	_ = s.Stop()
 }
 
@@ -255,7 +280,7 @@ func (s *SpinnerPrinter) Fail(message ...interface{}) {
 		message = []interface{}{s.Text}
 	}
 	fClearLine(s.Writer)
-	Fprinto(s.Writer, s.FailPrinter.Sprint(message...))
+	Fprinto(s.Writer, s.GetFormattedPrefix()+s.FailPrinter.Sprint(message...))
 	_ = s.Stop()
 }
 
@@ -270,6 +295,6 @@ func (s *SpinnerPrinter) Warning(message ...interface{}) {
 		message = []interface{}{s.Text}
 	}
 	fClearLine(s.Writer)
-	Fprinto(s.Writer, s.WarningPrinter.Sprint(message...))
+	Fprinto(s.Writer, s.GetFormattedPrefix()+s.WarningPrinter.Sprint(message...))
 	_ = s.Stop()
 }
