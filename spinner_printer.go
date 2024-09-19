@@ -161,9 +161,9 @@ func (s SpinnerPrinter) GetFormattedPrefix() string {
 func (s *SpinnerPrinter) UpdateText(text string) {
 	s.Text = text
 	if !RawOutput {
-		Fprinto(s.Writer, s.Style.Sprint(s.currentSequence)+" "+s.MessageStyle.Sprint(s.Text))
+		Fprinto(s.Writer, s.GetFormattedPrefix()+s.Style.Sprint(s.currentSequence)+" "+s.MessageStyle.Sprint(s.Text))
 	} else {
-		Fprintln(s.Writer, s.Text)
+		Fprintln(s.Writer, s.GetFormattedPrefix()+s.Text)
 	}
 }
 
@@ -178,7 +178,7 @@ func (s SpinnerPrinter) Start(text ...interface{}) (*SpinnerPrinter, error) {
 	}
 
 	if RawOutput {
-		Fprintln(s.Writer, s.Text)
+		Fprintln(s.Writer, s.GetFormattedPrefix()+s.Text)
 	}
 
 	go func() {
